@@ -1,0 +1,43 @@
+.navbar {
+  background: white;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .container {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  height: 95px;
+}
+
+.logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.navbar ul {
+  display: flex;
+
+  list-style: none;
+
+  gap: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+
+  color: var(--dark);
+
+  font-weight: 500;
+}

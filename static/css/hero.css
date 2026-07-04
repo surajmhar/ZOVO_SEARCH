@@ -1,0 +1,54 @@
+.hero {
+  padding-top: 100px;
+  padding-bottom: 180px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-right {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-right img {
+  width: 420px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: #eef4ff;
+  color: #2563eb;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 550px;
+}
+
+.hero-buttons {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}

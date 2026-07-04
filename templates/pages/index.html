@@ -1,0 +1,121 @@
+{% extends "layout/base.html" %} {% block title %} ZOVO SEARCH | AI SEO Agency
+{% endblock %} {% block content %}
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-left">
+      <span class="hero-tag"> 🚀 AI Powered SEO Agency </span>
+
+      <h1>
+        Rank Higher.<br />
+        Grow Faster.
+      </h1>
+
+      <p>
+        We help businesses dominate Google Search with AI-driven SEO strategies,
+        technical optimization and high-converting content.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn">Get Free Audit</a>
+        <a href="#" class="btn-outline">View Services</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="{{ url_for('static', filename='images/logo_hero.svg') }}"
+        alt="ZOVO SEARCH"
+        class="hero-logo"
+      />
+    </div>
+  </div>
+</section>
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat-card">
+      <h2>150+</h2>
+      <p>Projects Completed</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>97%</h2>
+      <p>Client Retention</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>12M+</h2>
+      <p>Organic Traffic Generated</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>5+</h2>
+      <p>Years Experience</p>
+    </div>
+  </div>
+</section>
+<section class="services">
+  <div class="container">
+    <div class="section-title">
+      <span>OUR SERVICES</span>
+
+      <h2>AI Powered SEO Services</h2>
+
+      <p>
+        We help businesses improve visibility, generate leads, and grow through
+        modern SEO strategies.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">🔍</div>
+
+        <h3>SEO Audit</h3>
+
+        <p>Complete website audit with technical recommendations.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">⚙️</div>
+
+        <h3>Technical SEO</h3>
+
+        <p>Improve website speed, structure and indexing.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">📍</div>
+
+        <h3>Local SEO</h3>
+
+        <p>Rank higher on Google Maps and local search.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">✍️</div>
+
+        <h3>Content Strategy</h3>
+
+        <p>SEO optimized content that drives organic traffic.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">🔗</div>
+
+        <h3>Link Building</h3>
+
+        <p>Build authority using high quality backlinks.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">🤖</div>
+
+        <h3>AI SEO Consulting</h3>
+
+        <p>AI-driven SEO planning for sustainable growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
