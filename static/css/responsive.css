@@ -1,0 +1,70 @@
+/* ==========================================================
+                    GLOBAL RESPONSIVE
+   ZOVO SEARCH - Global Layout Utilities
+========================================================== */
+
+/* =========================
+        Large Tablets
+========================= */
+
+@media (max-width: 1200px) {
+  .container {
+    width: 92%;
+  }
+}
+
+/* =========================
+        Tablets
+========================= */
+
+@media (max-width: 992px) {
+  .container {
+    width: 92%;
+  }
+
+  section {
+    scroll-margin-top: 100px;
+  }
+}
+
+/* =========================
+        Mobile
+========================= */
+
+@media (max-width: 768px) {
+  .container {
+    width: 94%;
+  }
+
+  section {
+    scroll-margin-top: 90px;
+  }
+
+  html {
+    font-size: 15px;
+  }
+}
+
+/* =========================
+        Small Mobile
+========================= */
+
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+
+  html {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+        Extra Small
+========================= */
+
+@media (max-width: 400px) {
+  html {
+    font-size: 13.5px;
+  }
+}

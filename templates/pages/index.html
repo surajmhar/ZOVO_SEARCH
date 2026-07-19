@@ -2,9 +2,16 @@
 {% endblock %} {% block content %}
 
 <section class="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+
   <div class="container hero-content">
-    <div class="hero-left">
-      <span class="hero-tag"> 🚀 AI Powered SEO Agency </span>
+    <div class="hero-left" data-aos="fade-right">
+      <span class="hero-tag">
+        <i data-lucide="rocket"></i>
+        AI Powered SEO Agency
+      </span>
 
       <h1>
         Rank Higher.<br />
@@ -16,41 +23,119 @@
         technical optimization and high-converting content.
       </p>
 
+      <!-- Buttons -->
       <div class="hero-buttons">
         <a href="#" class="btn">Get Free Audit</a>
         <a href="#" class="btn-outline">View Services</a>
       </div>
+
+      <!-- Trust Items -->
+      <div class="hero-trust">
+        <div class="trust-item">
+          <i data-lucide="shield-check"></i>
+          <span>Trusted SEO Partner</span>
+        </div>
+
+        <div class="trust-item">
+          <i data-lucide="bot"></i>
+          <span>AI Powered Strategy</span>
+        </div>
+
+        <div class="trust-item">
+          <i data-lucide="trending-up"></i>
+          <span>Proven Growth</span>
+        </div>
+
+        <div class="trust-item">
+          <i data-lucide="badge-check"></i>
+          <span>Transparent Reporting</span>
+        </div>
+      </div>
     </div>
 
     <div class="hero-right">
-      <img
-        src="{{ url_for('static', filename='images/logo_hero.svg') }}"
-        alt="ZOVO SEARCH"
-        class="hero-logo"
-      />
-    </div>
-  </div>
-</section>
-<section class="stats">
-  <div class="container stats-grid">
-    <div class="stat-card">
-      <h2>150+</h2>
-      <p>Projects Completed</p>
-    </div>
+      <div class="hero-visual">
+        <!-- Glow -->
+        <div class="hero-center-glow"></div>
 
-    <div class="stat-card">
-      <h2>97%</h2>
-      <p>Client Retention</p>
-    </div>
+        <!-- Orbit -->
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
 
-    <div class="stat-card">
-      <h2>12M+</h2>
-      <p>Organic Traffic Generated</p>
-    </div>
+        <!-- Orbit Dots -->
+        <span class="orbit-dot dot1"></span>
+        <span class="orbit-dot dot2"></span>
+        <span class="orbit-dot dot3"></span>
+        <span class="orbit-dot dot4"></span>
+        <span class="orbit-dot dot5"></span>
+        <span class="orbit-dot dot6"></span>
 
-    <div class="stat-card">
-      <h2>5+</h2>
-      <p>Years Experience</p>
+        <!-- Logo -->
+
+        <img
+          src="{{ url_for('static', filename='images/logo_hero.svg') }}"
+          class="hero-logo"
+          alt="ZOVO SEARCH"
+        />
+
+        <!-- Cards -->
+
+        <div class="floating-card traffic">
+          <div class="floating-icon">
+            <i data-lucide="trending-up"></i>
+          </div>
+
+          <div>
+            <h4>+312%</h4>
+            <p>Organic Traffic</p>
+          </div>
+        </div>
+
+        <div class="floating-card ranking">
+          <div class="floating-icon">
+            <i data-lucide="search"></i>
+          </div>
+
+          <div>
+            <h4>#1 Rankings</h4>
+            <p>Google Search</p>
+          </div>
+        </div>
+
+        <div class="floating-card keywords">
+          <div class="floating-icon">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+
+          <div>
+            <h4>+245%</h4>
+            <p>Keyword Growth</p>
+          </div>
+        </div>
+
+        <div class="floating-card ai">
+          <div class="floating-icon">
+            <i data-lucide="bot"></i>
+          </div>
+
+          <div>
+            <h4>AI Powered</h4>
+            <p>SEO Strategy</p>
+          </div>
+        </div>
+
+        <div class="floating-card clients">
+          <div class="floating-icon">
+            <i data-lucide="badge-check"></i>
+          </div>
+
+          <div>
+            <h4>98%</h4>
+            <p>Client Success</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -68,54 +153,93 @@
     </div>
 
     <div class="services-grid">
-      <div class="service-card">
-        <div class="icon">🔍</div>
+      <div class="service-card" data-aos="fade-up">
+        <div class="icon">
+          <i data-lucide="search"></i>
+        </div>
 
         <h3>SEO Audit</h3>
 
         <p>Complete website audit with technical recommendations.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
 
-      <div class="service-card">
-        <div class="icon">⚙️</div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon">
+          <i data-lucide="settings"></i>
+        </div>
 
         <h3>Technical SEO</h3>
 
         <p>Improve website speed, structure and indexing.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
 
-      <div class="service-card">
-        <div class="icon">📍</div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon">
+          <i data-lucide="map-pinned"></i>
+        </div>
 
         <h3>Local SEO</h3>
 
         <p>Rank higher on Google Maps and local search.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
 
-      <div class="service-card">
-        <div class="icon">✍️</div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon">
+          <i data-lucide="file-text"></i>
+        </div>
 
         <h3>Content Strategy</h3>
 
         <p>SEO optimized content that drives organic traffic.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
 
-      <div class="service-card">
-        <div class="icon">🔗</div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="icon">
+          <i data-lucide="link-2"></i>
+        </div>
 
         <h3>Link Building</h3>
 
         <p>Build authority using high quality backlinks.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
 
-      <div class="service-card">
-        <div class="icon">🤖</div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="icon">
+          <i data-lucide="bot"></i>
+        </div>
 
         <h3>AI SEO Consulting</h3>
 
         <p>AI-driven SEO planning for sustainable growth.</p>
+        <a href="#" class="service-link">
+          Learn More
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>
 </section>
-{% endblock %}
+{% include "sections/why_choose.html" %} {% include "sections/seo_process.html"
+%} {% include "sections/portfolio.html" %} {% include
+"sections/testimonials.html" %} {% include "sections/faq.html" %} {% include
+"sections/cta.html" %} {% endblock %}

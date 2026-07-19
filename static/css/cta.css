@@ -1,0 +1,746 @@
+/* ==========================================================
+                    PREMIUM CTA SECTION
+   ZOVO SEARCH - Premium SaaS Glassmorphism
+========================================================== */
+
+.cta-section {
+  position: relative;
+  padding: 140px 0;
+  overflow: hidden;
+}
+
+/* ==========================================================
+                    BACKGROUND BLURS
+========================================================== */
+
+.cta-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  pointer-events: none;
+  animation: floatGlow 8s ease-in-out infinite;
+}
+
+.cta-blur-1 {
+  width: 380px;
+  height: 380px;
+  background: #2563eb;
+  top: -120px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.cta-blur-2 {
+  width: 340px;
+  height: 340px;
+  background: #4f8bff;
+  bottom: -100px;
+  right: -80px;
+  animation-delay: 4s;
+}
+
+/* ==========================================================
+                        CTA CARD
+========================================================== */
+
+.cta-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 1280px;
+
+  margin: auto;
+
+  padding: 90px 100px;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  background: rgba(255, 255, 255, 0.68);
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  border: 1px solid rgba(79, 139, 255, 0.18);
+
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================
+                    INNER LIGHT
+========================================================== */
+
+.cta-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(79, 139, 255, 0.18),
+    transparent 45%
+  );
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+                PREMIUM GRADIENT BORDER
+========================================================== */
+
+.cta-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: 34px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.35),
+    rgba(79, 139, 255, 0.12),
+    rgba(255, 255, 255, 0.45),
+    rgba(37, 99, 235, 0.35)
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  opacity: 0.75;
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+                GLASS REFLECTION
+========================================================== */
+
+.glass-highlight {
+  position: absolute;
+
+  top: 0;
+
+  left: -35%;
+
+  width: 40%;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  animation: glassMove 7s linear infinite;
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+                    CONTENT LAYOUT
+========================================================== */
+
+.cta-content {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: 1.2fr 0.8fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+/* ==========================================================
+                    LEFT CONTENT
+========================================================== */
+
+.cta-left {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.cta-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 22px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  border: 1px solid rgba(79, 139, 255, 0.18);
+
+  color: #2563eb;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  margin-bottom: 28px;
+}
+
+.cta-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+
+  color: #0f172a;
+}
+
+.cta-title span {
+  display: block;
+
+  background: linear-gradient(135deg, #2563eb, #4f8bff);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+}
+
+.cta-description {
+  max-width: 620px;
+
+  margin: 28px 0 42px;
+
+  font-size: 18px;
+
+  line-height: 1.9;
+
+  color: #64748b;
+}
+/* ==========================================================
+                    CTA BUTTONS
+========================================================== */
+
+.cta-buttons {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------
+                    COMMON BUTTON
+---------------------------------------------------------- */
+
+.cta-buttons a {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 220px;
+
+  height: 60px;
+
+  padding: 0 34px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+/* ----------------------------------------------------------
+                    PRIMARY BUTTON
+---------------------------------------------------------- */
+
+.cta-buttons .btn-primary {
+  background: linear-gradient(135deg, #2563eb, #4f8bff);
+
+  color: #fff;
+
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.25);
+}
+
+/* ----------------------------------------------------------
+                    SECONDARY BUTTON
+---------------------------------------------------------- */
+
+.cta-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.75);
+
+  color: #2563eb;
+
+  border: 1px solid rgba(79, 139, 255, 0.2);
+
+  backdrop-filter: blur(18px);
+}
+
+/* ----------------------------------------------------------
+                    SHINE EFFECT
+---------------------------------------------------------- */
+
+.cta-buttons a::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -120%;
+
+  width: 60%;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  transition: left 0.7s ease;
+}
+
+/* ----------------------------------------------------------
+                    BUTTON HOVER
+---------------------------------------------------------- */
+
+.cta-buttons a:hover {
+  transform: translateY(-5px);
+}
+
+.cta-buttons a:hover::before {
+  left: 150%;
+}
+
+.cta-buttons .btn-primary:hover {
+  box-shadow: 0 24px 48px rgba(37, 99, 235, 0.35);
+}
+
+.cta-buttons .btn-secondary:hover {
+  background: #ffffff;
+
+  box-shadow: 0 18px 36px rgba(37, 99, 235, 0.14);
+}
+/* ==========================================================
+                    SEO DASHBOARD
+========================================================== */
+
+.cta-right {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.dashboard-card {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 440px;
+
+  padding: 36px;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+
+  border: 1px solid rgba(79, 139, 255, 0.16);
+
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 35px 70px rgba(37, 99, 235, 0.15);
+}
+
+.dashboard-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(79, 139, 255, 0.18),
+    transparent 45%
+  );
+
+  pointer-events: none;
+}
+/* ==========================================================
+                    DASHBOARD HEADER
+========================================================== */
+
+.dashboard-header {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 34px;
+}
+
+.dashboard-header span:first-child {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.dashboard-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(34, 197, 94, 0.12);
+
+  color: #16a34a;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+/* ==========================================================
+                    SEO SCORE
+========================================================== */
+
+.dashboard-score {
+  position: relative;
+
+  z-index: 2;
+
+  width: 180px;
+
+  height: 180px;
+
+  margin: 0 auto 36px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #2563eb, #4f8bff);
+
+  color: #fff;
+
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.28);
+}
+
+.dashboard-score h3 {
+  font-size: 64px;
+
+  line-height: 1;
+
+  margin-bottom: 8px;
+}
+
+.dashboard-score span {
+  font-size: 15px;
+
+  opacity: 0.9;
+}
+/* ==========================================================
+                    METRICS GRID
+========================================================== */
+
+.dashboard-metrics {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+.metric {
+  min-height: 110px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  border: 1px solid rgba(79, 139, 255, 0.14);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.metric:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
+}
+
+.metric strong {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 28px;
+
+  color: #2563eb;
+}
+
+.metric span {
+  font-size: 14px;
+
+  color: #64748b;
+}
+/* ==========================================================
+                    CTA ANIMATIONS
+========================================================== */
+
+@keyframes glassMove {
+  0% {
+    left: -45%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}
+
+@keyframes floatGlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulseLive {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+  }
+
+  70% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+/* ==========================================================
+                LIVE INDICATOR
+========================================================== */
+
+.dashboard-status::before {
+  content: "";
+
+  width: 10px;
+
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  animation: pulseLive 2s infinite;
+}
+/* ==========================================================
+                CARD HOVER EFFECT
+========================================================== */
+
+.dashboard-card:hover .dashboard-score {
+  transform: scale(1.05);
+}
+
+.dashboard-score {
+  transition: transform 0.4s ease;
+}
+
+.metric {
+  cursor: default;
+}
+
+.metric strong {
+  transition: 0.35s;
+}
+
+.metric:hover strong {
+  transform: scale(1.08);
+}
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media (max-width: 1100px) {
+  .cta-card {
+    padding: 70px;
+  }
+
+  .cta-content {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .cta-left {
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .cta-description {
+    margin: 28px auto 40px;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 90px 0;
+  }
+
+  .cta-card {
+    padding: 45px 28px;
+
+    border-radius: 28px;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-description {
+    font-size: 16px;
+
+    line-height: 1.8;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .cta-buttons a {
+    width: 100%;
+
+    min-width: unset;
+  }
+
+  .dashboard-card {
+    max-width: 100%;
+
+    padding: 26px;
+  }
+
+  .dashboard-score {
+    width: 140px;
+
+    height: 140px;
+  }
+
+  .dashboard-score h3 {
+    font-size: 52px;
+  }
+
+  .dashboard-metrics {
+    grid-template-columns: 1fr;
+  }
+}
