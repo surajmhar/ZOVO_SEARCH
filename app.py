@@ -19,6 +19,14 @@ def services():
 def portfolio():
     return render_template("pages/portfolio.html")
 
+@app.route("/contact")
+def contact():
+    return render_template("pages/contact.html")
+
+@app.route("/analyzer")
+def analyzer():
+    return render_template("pages/analyzer.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
