@@ -1,0 +1,257 @@
+<section class="dashboard-page">
+  <div class="dashboard-glow dashboard-glow-1"></div>
+  <div class="dashboard-glow dashboard-glow-2"></div>
+
+  <div class="container">
+    <!-- =========================================
+         DASHBOARD HEADER
+    ========================================== -->
+
+    <div class="dashboard-header" data-aos="fade-up">
+      <div>
+        <span class="section-badge">YOUR SEO WORKSPACE</span>
+
+        <h1>
+          Welcome Back,
+          <span>{{ current_user.name }}.</span>
+        </h1>
+
+        <p>
+          Track your SEO activity, review recent website analyses, and continue
+          improving your search visibility with ZOVO SEARCH.
+        </p>
+      </div>
+
+      <div class="dashboard-header-actions">
+        <a href="{{ url_for('analyzer') }}" class="btn">
+          <i data-lucide="sparkles"></i>
+          Analyze Website
+        </a>
+      </div>
+    </div>
+
+    <!-- =========================================
+         ACCOUNT + SUMMARY
+    ========================================== -->
+
+    <div class="dashboard-overview">
+      <!-- ACCOUNT CARD -->
+
+      <div class="dashboard-profile-card" data-aos="fade-right">
+        <div class="dashboard-profile-top">
+          <div class="dashboard-avatar">{{ current_user.name[0] | upper }}</div>
+
+          <div>
+            <span>ZOVO SEARCH ACCOUNT</span>
+            <h3>{{ current_user.name }}</h3>
+            <p>{{ current_user.email }}</p>
+          </div>
+        </div>
+
+        <div class="dashboard-profile-divider"></div>
+
+        <div class="dashboard-profile-meta">
+          <div>
+            <span>Member Since</span>
+            <strong>
+              {{ current_user.created_at.strftime('%d %b %Y') }}
+            </strong>
+          </div>
+
+          <div>
+            <span>Account Status</span>
+            <strong class="account-active">
+              <i data-lucide="check-circle-2"></i>
+              Active
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+
+      <div class="dashboard-stat-grid">
+        <div class="dashboard-stat-card" data-aos="fade-up">
+          <div class="dashboard-stat-icon">
+            <i data-lucide="scan-search"></i>
+          </div>
+
+          <div>
+            <span>Total Analyses</span>
+            <strong>{{ total_analyses }}</strong>
+          </div>
+        </div>
+
+        <div
+          class="dashboard-stat-card"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div class="dashboard-stat-icon">
+            <i data-lucide="gauge"></i>
+          </div>
+
+          <div>
+            <span>Average Score</span>
+            <strong>{{ average_score }}</strong>
+          </div>
+        </div>
+
+        <div
+          class="dashboard-stat-card"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="dashboard-stat-icon">
+            <i data-lucide="trophy"></i>
+          </div>
+
+          <div>
+            <span>Best Score</span>
+            <strong>{{ best_score }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         RECENT ANALYSES
+    ========================================== -->
+
+    <div class="dashboard-section-card" data-aos="fade-up">
+      <div class="dashboard-section-heading">
+        <div>
+          <span>SEO ACTIVITY</span>
+          <h2>Recent Analyses</h2>
+        </div>
+
+        <a href="{{ url_for('analyzer') }}">
+          Run New Analysis
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+
+      {% if recent_analyses %}
+      <div class="dashboard-table-wrapper">
+        <table class="dashboard-table">
+          <thead>
+            <tr>
+              <th>Website</th>
+              <th>Overall</th>
+              <th>Performance</th>
+              <th>On-Page</th>
+              <th>Technical</th>
+              <th>Mobile</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for analysis in recent_analyses %}
+            <tr>
+              <td>
+                <div class="dashboard-website">
+                  <div class="dashboard-website-icon">
+                    <i data-lucide="globe-2"></i>
+                  </div>
+
+                  <span>{{ analysis.url }}</span>
+                </div>
+              </td>
+
+              <td>
+                <span class="dashboard-score">
+                  {{ analysis.overall_score }}
+                </span>
+              </td>
+
+              <td>{{ analysis.performance_score }}</td>
+
+              <td>{{ analysis.on_page_score }}</td>
+
+              <td>{{ analysis.technical_score }}</td>
+
+              <td>{{ analysis.mobile_score }}</td>
+
+              <td>{{ analysis.created_at.strftime('%d %b %Y') }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <!-- EMPTY STATE -->
+
+      <div class="dashboard-empty-state">
+        <div class="dashboard-empty-icon">
+          <i data-lucide="scan-search"></i>
+        </div>
+
+        <h3>No SEO Analyses Yet</h3>
+
+        <p>
+          Run your first website analysis and your SEO report history will
+          appear here automatically.
+        </p>
+
+        <a href="{{ url_for('analyzer') }}" class="btn">
+          <i data-lucide="sparkles"></i>
+          Analyze My First Website
+        </a>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- =========================================
+         QUICK ACTIONS
+    ========================================== -->
+
+    <div class="dashboard-quick-actions" data-aos="fade-up">
+      <div class="dashboard-quick-heading">
+        <span>QUICK ACTIONS</span>
+        <h2>Continue Growing With ZOVO</h2>
+      </div>
+
+      <div class="dashboard-action-grid">
+        <a href="{{ url_for('analyzer') }}" class="dashboard-action-card">
+          <div class="dashboard-action-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+
+          <div>
+            <strong>Run SEO Analysis</strong>
+            <span>Check another website's SEO health.</span>
+          </div>
+
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="dashboard-action-card">
+          <div class="dashboard-action-icon">
+            <i data-lucide="layers-3"></i>
+          </div>
+
+          <div>
+            <strong>Explore SEO Services</strong>
+            <span>See how ZOVO can help improve your rankings.</span>
+          </div>
+
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+
+        <a href="{{ url_for('contact') }}" class="dashboard-action-card">
+          <div class="dashboard-action-icon">
+            <i data-lucide="messages-square"></i>
+          </div>
+
+          <div>
+            <strong>Talk to ZOVO</strong>
+            <span>Discuss your SEO goals with our team.</span>
+          </div>
+
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

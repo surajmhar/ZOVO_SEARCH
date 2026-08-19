@@ -211,6 +211,51 @@ def logout():
 
 
 # =========================================================
+# USER DASHBOARD
+# =========================================================
+
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    analyses = (
+        SEOAnalysis.query
+        .filter_by(user_id=current_user.id)
+        .order_by(SEOAnalysis.created_at.desc())
+        .all()
+    )
+
+    total_analyses = len(analyses)
+
+    if total_analyses > 0:
+        average_score = round(
+            sum(
+                analysis.overall_score
+                for analysis in analyses
+            )
+            / total_analyses
+        )
+
+        best_score = max(
+            analysis.overall_score
+            for analysis in analyses
+        )
+    else:
+        average_score = 0
+        best_score = 0
+
+    recent_analyses = analyses[:5]
+
+    return render_template(
+        "pages/dashboard.html",
+        analyses=analyses,
+        recent_analyses=recent_analyses,
+        total_analyses=total_analyses,
+        average_score=average_score,
+        best_score=best_score,
+    )
+
+
+# =========================================================
 # CONTACT
 # =========================================================
 
@@ -287,7 +332,49 @@ def analyze():
                 "error": "Please enter a website URL."
             }), 400
 
+        # Run real SEO analysis
         result = analyze_website(url)
+
+        # Save analysis history only for logged-in users
+        if current_user.is_authenticated:
+            try:
+                category_scores = result.get(
+                    "category_scores",
+                    {}
+                )
+
+                analysis_record = SEOAnalysis(
+                    user_id=current_user.id,
+                    url=result.get("final_url") or url,
+                    overall_score=result.get("score", 0),
+                    performance_score=category_scores.get(
+                        "performance",
+                        0
+                    ),
+                    on_page_score=category_scores.get(
+                        "on_page",
+                        0
+                    ),
+                    technical_score=category_scores.get(
+                        "technical",
+                        0
+                    ),
+                    mobile_score=category_scores.get(
+                        "mobile",
+                        0
+                    ),
+                )
+
+                db.session.add(analysis_record)
+                db.session.commit()
+
+            except Exception as database_error:
+                db.session.rollback()
+
+                print(
+                    "Analysis history save error:",
+                    database_error
+                )
 
         return jsonify({
             "success": True,
@@ -305,7 +392,10 @@ def analyze():
 
         return jsonify({
             "success": False,
-            "error": "Something went wrong while analyzing the website."
+            "error": (
+                "Something went wrong while "
+                "analyzing the website."
+            )
         }), 500
 
 
@@ -323,3 +413,4 @@ with app.app_context():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

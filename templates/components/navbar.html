@@ -1,21 +1,98 @@
 <nav class="navbar">
   <div class="container">
-    <a href="/" class="logo">
+    <!-- LOGO -->
+    <a href="{{ url_for('home') }}" class="logo">
       <img
         src="{{ url_for('static', filename='images/logo.png') }}"
         alt="ZOVO SEARCH Logo"
       />
     </a>
 
+    <!-- MAIN NAVIGATION -->
     <div class="nav-menu">
-      <a href="/" class="active">Home</a>
-      <a href="{{ url_for('about') }}">About</a>
-      <a href="{{ url_for('services') }}">Services</a>
-      <a href="{{ url_for('portfolio') }}">Portfolio</a>
-      <a href="{{ url_for('contact') }}">Contact</a>
+      <a
+        href="{{ url_for('home') }}"
+        class="{% if request.endpoint == 'home' %}active{% endif %}"
+      >
+        Home
+      </a>
+
+      <a
+        href="{{ url_for('about') }}"
+        class="{% if request.endpoint == 'about' %}active{% endif %}"
+      >
+        About
+      </a>
+
+      <a
+        href="{{ url_for('services') }}"
+        class="{% if request.endpoint == 'services' %}active{% endif %}"
+      >
+        Services
+      </a>
+
+      <a
+        href="{{ url_for('portfolio') }}"
+        class="{% if request.endpoint == 'portfolio' %}active{% endif %}"
+      >
+        Portfolio
+      </a>
+
+      <a
+        href="{{ url_for('contact') }}"
+        class="{% if request.endpoint == 'contact' %}active{% endif %}"
+      >
+        Contact
+      </a>
+
+      <!-- MOBILE AUTH LINKS -->
+      <div class="mobile-auth-links">
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('analyzer') }}"> SEO Analyzer </a>
+
+        <a href="{{ url_for('logout') }}"> Logout </a>
+        {% else %}
+        <a href="{{ url_for('login') }}"> Login </a>
+
+        <a href="{{ url_for('register') }}"> Create Account </a>
+        {% endif %}
+      </div>
     </div>
 
-    <a href="{{ url_for('analyzer') }}" class="btn"> Analyze Website </a>
+    <!-- DESKTOP RIGHT ACTIONS -->
+    <div class="nav-actions">
+      {% if current_user.is_authenticated %}
+      <div class="nav-user">
+        <div class="nav-user-avatar">{{ current_user.name[0] | upper }}</div>
+
+        <div class="nav-user-info">
+          <span>Welcome</span>
+          <strong>{{ current_user.name }}</strong>
+        </div>
+      </div>
+
+      <a href="{{ url_for('analyzer') }}" class="nav-analyzer-btn">
+        <i data-lucide="sparkles"></i>
+        Analyze
+      </a>
+
+      <a
+        href="{{ url_for('logout') }}"
+        class="nav-logout-btn"
+        title="Logout"
+        aria-label="Logout"
+      >
+        <i data-lucide="log-out"></i>
+      </a>
+
+      {% else %}
+      <a href="{{ url_for('login') }}" class="nav-login-btn"> Login </a>
+
+      <a href="{{ url_for('register') }}" class="btn"> Create Account </a>
+      {% endif %}
+    </div>
+
+    <!-- MOBILE MENU BUTTON -->
     <button class="menu-toggle" aria-label="Toggle Menu">
       <span></span>
       <span></span>
