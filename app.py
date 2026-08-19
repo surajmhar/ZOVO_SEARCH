@@ -7,6 +7,23 @@ app = Flask(__name__)
 def home():
     return render_template("pages/index.html")
 
+@app.route("/about")
+def about():
+    return render_template("pages/about.html")
+
+@app.route("/services")
+def services():
+    return render_template("pages/services.html")
+
+@app.route("/portfolio")
+def portfolio():
+    return render_template("pages/portfolio.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+    
+
+
