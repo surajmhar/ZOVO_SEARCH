@@ -18,7 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const analysisSteps = document.querySelectorAll(".analysis-step");
 
-  // Initial state
+  const overallScore = document.getElementById("overallScore");
+  const scoreStatus = document.getElementById("scoreStatus");
+
+  const performanceScore = document.getElementById("performanceScore");
+  const onPageScore = document.getElementById("onPageScore");
+  const technicalScore = document.getElementById("technicalScore");
+  const mobileScore = document.getElementById("mobileScore");
+
+  const performanceProgress = document.getElementById("performanceProgress");
+  const onPageProgress = document.getElementById("onPageProgress");
+  const technicalProgress = document.getElementById("technicalProgress");
+  const mobileProgress = document.getElementById("mobileProgress");
+
+  const passedCount = document.getElementById("passedCount");
+  const warningCount = document.getElementById("warningCount");
+  const criticalCount = document.getElementById("criticalCount");
+
+  const issueList = document.querySelector(".seo-issue-list");
+  const recommendationGrid = document.querySelector(".recommendation-grid");
+
+  let currentAnalysisData = null;
+  let progressTimer = null;
+
   loadingSection.style.display = "none";
   resultsSection.style.display = "none";
 
@@ -52,12 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
       step: 4,
       title: "Generating SEO insights...",
       status: "Preparing recommendations and optimization opportunities.",
-    },
-    {
-      progress: 100,
-      step: 4,
-      title: "Analysis complete",
-      status: "Your SEO report is ready.",
     },
   ];
 
@@ -94,8 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetProgress() {
+    if (progressTimer) {
+      clearTimeout(progressTimer);
+      progressTimer = null;
+    }
+
     progressBar.style.width = "0%";
     percentageText.textContent = "0%";
+
     analysisStepText.textContent = "Initializing analysis...";
     analysisStatus.textContent =
       "Connecting to your website and preparing SEO analysis.";
@@ -115,16 +137,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  function showResults(url) {
-    loadingSection.style.display = "none";
-    resultsSection.style.display = "block";
+  function completeProgress() {
+    progressBar.style.width = "100%";
+    percentageText.textContent = "100%";
 
-    analyzedWebsite.textContent = `SEO analysis for ${url}`;
+    analysisStepText.textContent = "Analysis complete";
+    analysisStatus.textContent = "Your SEO report is ready.";
 
     analysisSteps.forEach((step) => {
       step.classList.remove("active");
       step.classList.add("complete");
     });
+  }
+
+  function showResults(url) {
+    loadingSection.style.display = "none";
+    resultsSection.style.display = "block";
+
+    analyzedWebsite.textContent = `SEO analysis for ${url}`;
 
     if (typeof lucide !== "undefined") {
       lucide.createIcons();
@@ -138,18 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   }
 
-  function runDemoAnalysis(url) {
-    resetProgress();
-    showLoading();
-
+  function runLoadingAnimation() {
     let index = 0;
 
     function runStage() {
       if (index >= stages.length) {
-        setTimeout(() => {
-          showResults(url);
-        }, 700);
-
         return;
       }
 
@@ -165,10 +188,233 @@ document.addEventListener("DOMContentLoaded", () => {
 
       index += 1;
 
-      setTimeout(runStage, 850);
+      progressTimer = setTimeout(runStage, 700);
     }
 
-    setTimeout(runStage, 500);
+    progressTimer = setTimeout(runStage, 300);
+  }
+
+  function getScoreStatus(score) {
+    if (score >= 90) return "Excellent";
+    if (score >= 75) return "Good";
+    if (score >= 60) return "Needs Improvement";
+    return "Poor";
+  }
+
+  function getIssueCounts(recommendations) {
+    let warnings = 0;
+    let critical = 0;
+
+    recommendations.forEach((item) => {
+      if (item.type === "error") {
+        critical += 1;
+      }
+
+      if (item.type === "warning") {
+        warnings += 1;
+      }
+    });
+
+    const totalChecks = 10;
+    const failedChecks = warnings + critical;
+
+    return {
+      passed: Math.max(totalChecks - failedChecks, 0),
+      warnings,
+      critical,
+    };
+  }
+
+  function renderIssues(recommendations) {
+    issueList.innerHTML = "";
+
+    if (!recommendations || recommendations.length === 0) {
+      issueList.innerHTML = `
+        <div class="seo-issue passed">
+          <div class="issue-status">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+
+          <div class="issue-content">
+            <div class="issue-heading">
+              <h4>No Major SEO Issues Found</h4>
+              <span>Passed</span>
+            </div>
+
+            <p>
+              The analyzed page passed the current SEO checks.
+            </p>
+          </div>
+        </div>
+      `;
+
+      return;
+    }
+
+    recommendations.forEach((item) => {
+      let cssClass = "warning";
+      let icon = "triangle-alert";
+      let label = "Warning";
+
+      if (item.type === "error") {
+        cssClass = "critical";
+        icon = "circle-alert";
+        label = "Critical";
+      }
+
+      if (item.type === "success") {
+        cssClass = "passed";
+        icon = "check-circle-2";
+        label = "Passed";
+      }
+
+      const issue = document.createElement("div");
+      issue.className = `seo-issue ${cssClass}`;
+
+      issue.innerHTML = `
+        <div class="issue-status">
+          <i data-lucide="${icon}"></i>
+        </div>
+
+        <div class="issue-content">
+          <div class="issue-heading">
+            <h4>${item.title}</h4>
+            <span>${label}</span>
+          </div>
+
+          <p>${item.message}</p>
+        </div>
+      `;
+
+      issueList.appendChild(issue);
+    });
+  }
+
+  function renderRecommendations(recommendations) {
+    recommendationGrid.innerHTML = "";
+
+    const actionableItems = recommendations
+      .filter((item) => item.type !== "success")
+      .slice(0, 3);
+
+    if (actionableItems.length === 0) {
+      actionableItems.push({
+        title: "Maintain Your SEO Health",
+        message:
+          "Continue monitoring metadata, content structure, technical SEO and search performance.",
+      });
+    }
+
+    actionableItems.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.className = "recommendation-card";
+
+      card.innerHTML = `
+        <span class="recommendation-number">
+          ${String(index + 1).padStart(2, "0")}
+        </span>
+
+        <h4>${item.title}</h4>
+
+        <p>${item.message}</p>
+      `;
+
+      recommendationGrid.appendChild(card);
+    });
+  }
+
+  function populateResults(data) {
+    const categoryScores = data.category_scores;
+    const counts = getIssueCounts(data.recommendations);
+
+    overallScore.textContent = data.score;
+    scoreStatus.textContent = getScoreStatus(data.score);
+
+    performanceScore.textContent = categoryScores.performance;
+
+    onPageScore.textContent = categoryScores.on_page;
+
+    technicalScore.textContent = categoryScores.technical;
+
+    mobileScore.textContent = categoryScores.mobile;
+
+    performanceProgress.style.width = `${categoryScores.performance}%`;
+
+    onPageProgress.style.width = `${categoryScores.on_page}%`;
+
+    technicalProgress.style.width = `${categoryScores.technical}%`;
+
+    mobileProgress.style.width = `${categoryScores.mobile}%`;
+
+    passedCount.textContent = counts.passed;
+    warningCount.textContent = counts.warnings;
+    criticalCount.textContent = counts.critical;
+
+    renderIssues(data.recommendations);
+    renderRecommendations(data.recommendations);
+
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+  }
+
+  async function analyzeWebsite(url) {
+    resetProgress();
+    showLoading();
+    runLoadingAnimation();
+
+    try {
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: url,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Unable to analyze this website.");
+      }
+
+      currentAnalysisData = result.data;
+
+      console.log("Real SEO analysis:", currentAnalysisData);
+
+      populateResults(currentAnalysisData);
+
+      if (progressTimer) {
+        clearTimeout(progressTimer);
+        progressTimer = null;
+      }
+
+      completeProgress();
+
+      setTimeout(() => {
+        showResults(currentAnalysisData.final_url || url);
+      }, 700);
+    } catch (error) {
+      console.error("Analyzer error:", error);
+
+      if (progressTimer) {
+        clearTimeout(progressTimer);
+        progressTimer = null;
+      }
+
+      loadingSection.style.display = "none";
+
+      alert(
+        error.message || "Something went wrong while analyzing the website.",
+      );
+
+      heroSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   }
 
   form.addEventListener("submit", (event) => {
@@ -183,12 +429,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const url = normalizeUrl(rawUrl);
 
-    runDemoAnalysis(url);
+    analyzeWebsite(url);
   });
 
   reanalyzeButton.addEventListener("click", () => {
+    if (progressTimer) {
+      clearTimeout(progressTimer);
+      progressTimer = null;
+    }
+
     loadingSection.style.display = "none";
     resultsSection.style.display = "none";
+
+    currentAnalysisData = null;
 
     resetProgress();
 

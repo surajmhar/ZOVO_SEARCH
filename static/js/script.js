@@ -65,6 +65,3 @@ document.addEventListener("click", (e) => {
     document.body.classList.remove("menu-open");
   }
 });
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-<script src="{{ url_for('static', filename='js/services.js') }}"></script>

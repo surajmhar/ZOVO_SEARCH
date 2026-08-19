@@ -42,7 +42,6 @@
 
           <button type="submit" class="analyzer-submit">
             <span>Analyze Website</span>
-
             <i data-lucide="arrow-right"></i>
           </button>
         </form>
@@ -132,7 +131,6 @@
 
 <!-- =========================================================
      ANALYSIS LOADING
-     Hidden until user starts analysis
 ========================================================= -->
 
 <section class="analysis-loading-section" id="analysisLoading">
@@ -146,7 +144,7 @@
         </div>
       </div>
 
-      <span class="loading-label"> ZOVO AI ANALYSIS </span>
+      <span class="loading-label">ZOVO AI ANALYSIS</span>
 
       <h2>Analyzing Your Website...</h2>
 
@@ -160,9 +158,8 @@
         </div>
 
         <div class="analysis-progress-info">
-          <span id="analysisStep"> Initializing analysis... </span>
-
-          <strong id="analysisPercentage"> 0% </strong>
+          <span id="analysisStep">Initializing analysis...</span>
+          <strong id="analysisPercentage">0%</strong>
         </div>
       </div>
 
@@ -195,7 +192,6 @@
 
 <!-- =========================================================
      SEO RESULTS
-     Hidden until analysis completes
 ========================================================= -->
 
 <section class="analyzer-results" id="analyzerResults">
@@ -204,7 +200,7 @@
 
     <div class="results-header">
       <div>
-        <span class="results-badge"> SEO ANALYSIS COMPLETE </span>
+        <span class="results-badge">SEO ANALYSIS COMPLETE</span>
 
         <h2>
           Your Website
@@ -218,7 +214,6 @@
 
       <button class="reanalyze-btn" id="reanalyzeButton">
         <i data-lucide="rotate-ccw"></i>
-
         Analyze Another Website
       </button>
     </div>
@@ -229,17 +224,16 @@
       <!-- Main Score -->
 
       <div class="overall-score-card">
-        <span class="score-label"> OVERALL SEO SCORE </span>
+        <span class="score-label">OVERALL SEO SCORE</span>
 
         <div class="overall-score-ring">
           <div class="score-ring-inner">
-            <strong id="overallScore"> 94 </strong>
-
+            <strong id="overallScore">0</strong>
             <span>/100</span>
           </div>
         </div>
 
-        <h3 id="scoreStatus">Excellent</h3>
+        <h3 id="scoreStatus">Analyzing</h3>
 
         <p>Your website follows many important SEO best practices.</p>
       </div>
@@ -253,13 +247,13 @@
               <i data-lucide="gauge"></i>
             </div>
 
-            <strong id="performanceScore"> 96 </strong>
+            <strong id="performanceScore">0</strong>
           </div>
 
           <span>Performance</span>
 
           <div class="category-progress">
-            <span style="width: 96%"></span>
+            <span id="performanceProgress" style="width: 0%"></span>
           </div>
         </div>
 
@@ -269,13 +263,13 @@
               <i data-lucide="file-search"></i>
             </div>
 
-            <strong id="onPageScore"> 92 </strong>
+            <strong id="onPageScore">0</strong>
           </div>
 
           <span>On-Page SEO</span>
 
           <div class="category-progress">
-            <span style="width: 92%"></span>
+            <span id="onPageProgress" style="width: 0%"></span>
           </div>
         </div>
 
@@ -285,13 +279,13 @@
               <i data-lucide="code-2"></i>
             </div>
 
-            <strong id="technicalScore"> 94 </strong>
+            <strong id="technicalScore">0</strong>
           </div>
 
           <span>Technical SEO</span>
 
           <div class="category-progress">
-            <span style="width: 94%"></span>
+            <span id="technicalProgress" style="width: 0%"></span>
           </div>
         </div>
 
@@ -301,13 +295,13 @@
               <i data-lucide="smartphone"></i>
             </div>
 
-            <strong id="mobileScore"> 98 </strong>
+            <strong id="mobileScore">0</strong>
           </div>
 
           <span>Mobile SEO</span>
 
           <div class="category-progress">
-            <span style="width: 98%"></span>
+            <span id="mobileProgress" style="width: 0%"></span>
           </div>
         </div>
       </div>
@@ -324,8 +318,7 @@
         </div>
 
         <div>
-          <strong id="passedCount"> 18 </strong>
-
+          <strong id="passedCount">0</strong>
           <span>Passed Checks</span>
         </div>
       </div>
@@ -336,8 +329,7 @@
         </div>
 
         <div>
-          <strong id="warningCount"> 4 </strong>
-
+          <strong id="warningCount">0</strong>
           <span>Warnings</span>
         </div>
       </div>
@@ -348,8 +340,7 @@
         </div>
 
         <div>
-          <strong id="criticalCount"> 2 </strong>
-
+          <strong id="criticalCount">0</strong>
           <span>Critical Issues</span>
         </div>
       </div>
@@ -363,7 +354,6 @@
       <div class="report-section-heading">
         <div>
           <span>SEO HEALTH</span>
-
           <h3>Issues & Opportunities</h3>
         </div>
 
@@ -371,82 +361,7 @@
       </div>
 
       <div class="seo-issue-list">
-        <!-- Critical -->
-
-        <div class="seo-issue critical">
-          <div class="issue-status">
-            <i data-lucide="circle-alert"></i>
-          </div>
-
-          <div class="issue-content">
-            <div class="issue-heading">
-              <h4>Meta Description Needs Improvement</h4>
-
-              <span>Critical</span>
-            </div>
-
-            <p>
-              Your meta description may be missing, too short, or not optimized
-              for search intent.
-            </p>
-
-            <div class="issue-recommendation">
-              <i data-lucide="lightbulb"></i>
-
-              <span>
-                Write a clear and relevant meta description that accurately
-                explains the page.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Warning -->
-
-        <div class="seo-issue warning">
-          <div class="issue-status">
-            <i data-lucide="triangle-alert"></i>
-          </div>
-
-          <div class="issue-content">
-            <div class="issue-heading">
-              <h4>Some Images May Be Missing Alt Text</h4>
-
-              <span>Warning</span>
-            </div>
-
-            <p>
-              Image alternative text helps search engines understand visual
-              content and improves accessibility.
-            </p>
-
-            <div class="issue-recommendation">
-              <i data-lucide="lightbulb"></i>
-
-              <span>
-                Add descriptive alt attributes to meaningful images.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Passed -->
-
-        <div class="seo-issue passed">
-          <div class="issue-status">
-            <i data-lucide="check-circle-2"></i>
-          </div>
-
-          <div class="issue-content">
-            <div class="issue-heading">
-              <h4>HTTPS Security Enabled</h4>
-
-              <span>Passed</span>
-            </div>
-
-            <p>Your website is served through a secure HTTPS connection.</p>
-          </div>
-        </div>
+        <!-- Dynamic SEO issues inserted by analyzer-page.js -->
       </div>
     </div>
 
@@ -462,44 +377,12 @@
 
         <div>
           <span>ZOVO AI INSIGHTS</span>
-
           <h3>Recommended Next Steps</h3>
         </div>
       </div>
 
       <div class="recommendation-grid">
-        <div class="recommendation-card">
-          <span class="recommendation-number"> 01 </span>
-
-          <h4>Improve Search Metadata</h4>
-
-          <p>
-            Optimize your page titles and meta descriptions around relevant
-            search intent.
-          </p>
-        </div>
-
-        <div class="recommendation-card">
-          <span class="recommendation-number"> 02 </span>
-
-          <h4>Strengthen Content Structure</h4>
-
-          <p>
-            Use clear heading hierarchy and improve content organization for
-            users and search engines.
-          </p>
-        </div>
-
-        <div class="recommendation-card">
-          <span class="recommendation-number"> 03 </span>
-
-          <h4>Improve Technical Health</h4>
-
-          <p>
-            Resolve technical SEO warnings that may affect crawling, indexing,
-            and overall performance.
-          </p>
-        </div>
+        <!-- Dynamic recommendations inserted by analyzer-page.js -->
       </div>
     </div>
 
@@ -523,7 +406,6 @@
 
       <a href="{{ url_for('contact') }}" class="btn">
         Talk to ZOVO
-
         <i data-lucide="arrow-right"></i>
       </a>
     </div>

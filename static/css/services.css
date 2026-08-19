@@ -281,6 +281,3 @@ SERVICES
 .service-card:hover .service-link svg {
   transform: translateX(6px);
 }
-.down-card {
-  margin-top: 45px;
-}
