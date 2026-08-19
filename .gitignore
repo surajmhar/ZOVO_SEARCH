@@ -5,3 +5,5 @@ venv/
 instance/
 .idea/
 .vscode/settings.json
+# Local SQLite database
+database/zovo_search.db
