@@ -48,13 +48,21 @@
       <!-- MOBILE AUTH LINKS -->
       <div class="mobile-auth-links">
         {% if current_user.is_authenticated %}
+
+        <a href="{{ url_for('dashboard') }}"> Dashboard </a>
+
         <a href="{{ url_for('analyzer') }}"> SEO Analyzer </a>
 
         <a href="{{ url_for('logout') }}"> Logout </a>
+
         {% else %}
+
+        <a href="{{ url_for('analyzer') }}"> SEO Analyzer </a>
+
         <a href="{{ url_for('login') }}"> Login </a>
 
         <a href="{{ url_for('register') }}"> Create Account </a>
+
         {% endif %}
       </div>
     </div>
@@ -62,6 +70,7 @@
     <!-- DESKTOP RIGHT ACTIONS -->
     <div class="nav-actions">
       {% if current_user.is_authenticated %}
+
       <div class="nav-user">
         <div class="nav-user-avatar">{{ current_user.name[0] | upper }}</div>
 
@@ -70,6 +79,11 @@
           <strong>{{ current_user.name }}</strong>
         </div>
       </div>
+
+      <a href="{{ url_for('dashboard') }}" class="nav-dashboard-btn">
+        <i data-lucide="layout-dashboard"></i>
+        Dashboard
+      </a>
 
       <a href="{{ url_for('analyzer') }}" class="nav-analyzer-btn">
         <i data-lucide="sparkles"></i>
@@ -86,9 +100,16 @@
       </a>
 
       {% else %}
+
+      <a href="{{ url_for('analyzer') }}" class="nav-analyzer-btn">
+        <i data-lucide="sparkles"></i>
+        Analyzer
+      </a>
+
       <a href="{{ url_for('login') }}" class="nav-login-btn"> Login </a>
 
       <a href="{{ url_for('register') }}" class="btn"> Create Account </a>
+
       {% endif %}
     </div>
 

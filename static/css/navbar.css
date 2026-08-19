@@ -617,3 +617,51 @@
     background: rgba(37, 99, 235, 0.1);
   }
 }
+/* ==========================================================
+                   DASHBOARD NAV BUTTON
+========================================================== */
+
+.nav-dashboard-btn {
+  height: 46px;
+  padding: 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 999px;
+
+  background: rgba(37, 99, 235, 0.06);
+
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+.nav-dashboard-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.nav-dashboard-btn:hover {
+  background: rgba(37, 99, 235, 0.1);
+
+  border-color: rgba(37, 99, 235, 0.28);
+
+  color: #1d4ed8;
+
+  transform: translateY(-2px);
+}
+
+.nav-dashboard-btn:active {
+  transform: translateY(0);
+}
