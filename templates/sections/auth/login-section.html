@@ -1,0 +1,157 @@
+<section class="auth-page">
+  <div class="auth-glow auth-glow-1"></div>
+  <div class="auth-glow auth-glow-2"></div>
+
+  <div class="container">
+    <div class="auth-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="auth-content" data-aos="fade-right">
+        <span class="section-badge">WELCOME BACK</span>
+
+        <h1>
+          Continue Your
+          <span>SEO Growth Journey.</span>
+        </h1>
+
+        <p>
+          Sign in to access your ZOVO SEARCH account, review your SEO activity,
+          and continue improving your website visibility with smarter insights.
+        </p>
+
+        <div class="auth-benefits">
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="history"></i>
+            </div>
+
+            <div>
+              <strong>Access Previous Analyses</strong>
+              <span>Review your saved SEO reports and recent activity.</span>
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="layout-dashboard"></i>
+            </div>
+
+            <div>
+              <strong>Personal Dashboard</strong>
+              <span
+                >Keep your website analysis and SEO progress in one place.</span
+              >
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+
+            <div>
+              <strong>Secure Access</strong>
+              <span
+                >Your account is protected with secure password
+                verification.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="auth-card" data-aos="fade-left">
+        <div class="auth-card-header">
+          <div class="auth-card-icon">
+            <i data-lucide="log-in"></i>
+          </div>
+
+          <div>
+            <span>ZOVO SEARCH</span>
+            <h2>Sign In</h2>
+          </div>
+        </div>
+
+        <p class="auth-card-description">
+          Welcome back. Enter your account details to continue.
+        </p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="auth-alert-wrapper">
+          {% for category, message in messages %}
+          <div class="auth-alert {{ category }}">
+            {% if category == "success" %}
+            <i data-lucide="check-circle-2"></i>
+            {% else %}
+            <i data-lucide="circle-alert"></i>
+            {% endif %}
+
+            <span>{{ message }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+
+        <form class="auth-form" action="{{ url_for('login') }}" method="POST">
+          <!-- EMAIL -->
+          <div class="auth-form-group">
+            <label for="email">Email Address</label>
+
+            <div class="auth-input">
+              <i data-lucide="mail"></i>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="auth-form-group">
+            <label for="password">Password</label>
+
+            <div class="auth-input">
+              <i data-lucide="lock-keyhole"></i>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" class="auth-submit">
+            <span>Sign In to ZOVO SEARCH</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="auth-divider">
+          <span>New to ZOVO SEARCH?</span>
+        </div>
+
+        <a href="{{ url_for('register') }}" class="auth-secondary-action">
+          Create a Free Account
+          <i data-lucide="user-plus"></i>
+        </a>
+
+        <div class="auth-security-note">
+          <i data-lucide="lock"></i>
+
+          <span> Your login credentials are securely protected. </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,197 @@
+<section class="auth-page">
+  <div class="auth-glow auth-glow-1"></div>
+  <div class="auth-glow auth-glow-2"></div>
+
+  <div class="container">
+    <div class="auth-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="auth-content" data-aos="fade-right">
+        <span class="section-badge">CREATE YOUR ACCOUNT</span>
+
+        <h1>
+          Start Building Better
+          <span>Search Visibility.</span>
+        </h1>
+
+        <p>
+          Create your ZOVO SEARCH account to unlock SEO analysis history,
+          personalized insights, and a smarter way to track your website growth.
+        </p>
+
+        <div class="auth-benefits">
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="history"></i>
+            </div>
+
+            <div>
+              <strong>Save SEO Analysis History</strong>
+              <span>Access your previous website reports anytime.</span>
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="layout-dashboard"></i>
+            </div>
+
+            <div>
+              <strong>Personal Dashboard</strong>
+              <span>Track scores, reports, and optimization progress.</span>
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+
+            <div>
+              <strong>Secure Account</strong>
+              <span
+                >Your password is securely protected and never stored
+                directly.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="auth-card" data-aos="fade-left">
+        <div class="auth-card-header">
+          <div class="auth-card-icon">
+            <i data-lucide="user-plus"></i>
+          </div>
+
+          <div>
+            <span>ZOVO SEARCH</span>
+            <h2>Create Account</h2>
+          </div>
+        </div>
+
+        <p class="auth-card-description">
+          Create your free account and start tracking your SEO journey.
+        </p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="auth-alert-wrapper">
+          {% for category, message in messages %}
+          <div class="auth-alert {{ category }}">
+            {% if category == "success" %}
+            <i data-lucide="check-circle-2"></i>
+            {% else %}
+            <i data-lucide="circle-alert"></i>
+            {% endif %}
+
+            <span>{{ message }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+
+        <form
+          class="auth-form"
+          action="{{ url_for('register') }}"
+          method="POST"
+        >
+          <!-- NAME -->
+          <div class="auth-form-group">
+            <label for="name">Full Name</label>
+
+            <div class="auth-input">
+              <i data-lucide="user"></i>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="auth-form-group">
+            <label for="email">Email Address</label>
+
+            <div class="auth-input">
+              <i data-lucide="mail"></i>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="auth-form-group">
+            <label for="password">Password</label>
+
+            <div class="auth-input">
+              <i data-lucide="lock-keyhole"></i>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Minimum 8 characters"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- CONFIRM PASSWORD -->
+          <div class="auth-form-group">
+            <label for="confirm_password">Confirm Password</label>
+
+            <div class="auth-input">
+              <i data-lucide="shield-check"></i>
+
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" class="auth-submit">
+            <span>Create My Account</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="auth-divider">
+          <span>Already have an account?</span>
+        </div>
+
+        <a href="#" class="auth-secondary-action">
+          Sign In to ZOVO SEARCH
+          <i data-lucide="log-in"></i>
+        </a>
+
+        <div class="auth-security-note">
+          <i data-lucide="lock"></i>
+
+          <span> Your account credentials are securely protected. </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

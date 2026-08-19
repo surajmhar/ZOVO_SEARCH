@@ -21,9 +21,14 @@ class ContactMessage(db.Model):
         nullable=False
     )
 
-    subject = db.Column(
-        db.String(200),
+    website = db.Column(
+        db.String(500),
         nullable=True
+    )
+
+    service = db.Column(
+        db.String(100),
+        nullable=False
     )
 
     message = db.Column(

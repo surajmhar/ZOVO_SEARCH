@@ -1,3 +1,5 @@
-{% extends "layout/base.html" %} {% block title %}Contact | ZOVO SEARCH{%
+{% extends "layout/base.html" %} {% block title %} Contact | ZOVO SEARCH {%
 endblock %} {% block content %} {% include
-"sections/contact/contact-section.html" %} {% endblock %}
+"sections/contact/contact-section.html" %} {% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/contact-page.js') }}"></script>
+{% endblock %}
